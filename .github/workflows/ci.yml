@@ -32,4 +32,4 @@ jobs:
       
       - name: push Docker image
         run: |
-          docker push  -ben20099/flask-api-test:v2 .
+          docker push  ben20099/flask-api-test:v2 .
