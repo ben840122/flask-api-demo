@@ -24,7 +24,7 @@ jobs:
       #  Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t flask-api-test:v1 .
+          docker build -t flask-api-test:v2 .
 
       #  list Docker image
       - name: List Docker images
