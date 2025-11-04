@@ -36,7 +36,7 @@ jobs:
           cd terraform
           terraform init
           terraform apply -auto-approve
-            # 7. Run Blue → Green Playbook
+      # 7. Run Blue → Green Playbook
       - name: Blue to Green Deploy
         run: |
           export KUBECONFIG=~/.kube/config
