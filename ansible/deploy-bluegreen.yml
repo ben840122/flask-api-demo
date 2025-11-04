@@ -1,1 +1,37 @@
+---
+- name: Blue → Green Deployment Demo
+  hosts: localhost
+  gather_facts: false
+  tasks:
+
+    # 更新 Green Deployment image 為 v2
+    - name: Update green deployment image to v2
+      kubernetes.core.k8s:
+        kind: Deployment
+        namespace: flask-api
+        name: flask-api-green
+        definition:
+          spec:
+            template:
+              spec:
+                containers:
+                  - name: flaskapi-app
+                    image: ben20099/flaskapi-app:v2
+
+    # 切換 Service 指向 Green
+    - name: Switch Service to green
+      kubernetes.core.k8s:
+        kind: Service
+        namespace: flask-api
+        name: flask-api-service
+        definition:
+          spec:
+            selector:
+              app: flask-api
+              version: green
+
+    # 等待 Pod 就緒
+    - name: Wait a few seconds for green pods to be ready
+      pause:
+        seconds: 5
 
