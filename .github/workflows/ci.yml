@@ -1,4 +1,4 @@
-name: CI - Build Flask Docker Image
+name: CI-CD Deploy to Minikube
 
 on:
   push:
