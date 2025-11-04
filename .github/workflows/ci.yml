@@ -1,4 +1,4 @@
-name: CI - Build Flask Docker Image
+name: CI/CD - Demo Blue-Green Deploy
 
 on:
   push:
@@ -24,12 +24,20 @@ jobs:
       #  Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t DOCKER_USERNAME/flaskapi-app:v2 .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/flaskapi-app:v2 .
+          docker push ${{ secrets.DOCKER_USERNAME }}/flaskapi-app:v2
+      # Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
 
-      #  list Docker image
-      - name: List Docker images
-        run: docker images
-      
-      - name: Push Docker image
+      # Terraform Init & Apply
+      - name: Terraform Apply
         run: |
-          docker push DOCKER_USERNAME/flaskapi-app:v2
+          cd terraform
+          terraform init
+          terraform apply -auto-approve
+            # 7. Run Blue → Green Playbook
+      - name: Blue to Green Deploy
+        run: |
+          export KUBECONFIG=~/.kube/config
+          ansible-playbook ansible/deploy-bluegreen.yml
