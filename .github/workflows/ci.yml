@@ -1,4 +1,4 @@
-name: CI-CD Deploy to Minikube
+name: CI - Build Flask Docker Image
 
 on:
   push:
@@ -24,8 +24,7 @@ jobs:
       #  Build Docker image
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/flaskapi-app:${{ github.run_number }} .
-          docker tag ${{ secrets.DOCKER_USERNAME }}/flaskapi-app:${{ github.run_number }} ${{ secrets.DOCKERHUB_USERNAME }}/flaskapi-app:latest
+          docker build -t DOCKER_USERNAME/flaskapi-app:v2 .
 
       #  list Docker image
       - name: List Docker images
@@ -33,5 +32,4 @@ jobs:
       
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/flaskapi-app:${{ github.run_number }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/flaskapi-app:latest
+          docker push DOCKER_USERNAME/flaskapi-app:v2
