@@ -41,5 +41,4 @@ jobs:
       # 7. Run Blue → Green Playbook
       - name: Blue to Green Deploy
         run: |
-          export KUBECONFIG=~/.kube/config
           ansible-playbook ansible/deploy-bluegreen.yml
