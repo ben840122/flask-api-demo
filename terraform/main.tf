@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "kubernetes" {
-  config_path = "/home/runner/work/flask-api-demo/flask-api-demo/terraform/.kube/config"
+  config_path = "  config_path = "/home/ben/.kube/config_flat"
 }
 
 resource "kubernetes_namespace" "flask" {
