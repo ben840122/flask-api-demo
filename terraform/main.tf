@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "kubernetes" {
-  config_path = "/home/ben/.kube/config"
+   config_path = pathexpand("~/.kube/config")
 }
 
 resource "kubernetes_namespace" "flask" {
