@@ -33,7 +33,8 @@ jobs:
       # Terraform Init & Apply
       - name: Terraform Apply
         run: |
-          echo $KUBECONFIG
+          echo "KUBECONFIG=/home/ben/.kube/config" >> $GITHUB_ENV
+          ls -la $KUBECONFIG
           cd terraform
           terraform init
           terraform apply -auto-approve
