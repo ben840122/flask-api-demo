@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "kubernetes" {
-  config_path = "/home/ben/.kube/config_flat"
+  config_path = "${path.module}/kubeconfig.yaml"
 }
 
 resource "kubernetes_namespace" "flask" {
