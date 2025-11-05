@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "kubernetes" {
-  host = "http://127.0.0.1:8001"
+  host = "http://172.23.251.102:8001"
 }
 
 resource "kubernetes_namespace" "flask" {
