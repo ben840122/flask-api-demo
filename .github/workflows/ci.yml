@@ -30,10 +30,6 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         
-      - name: Verify Minikube Kubeconfig Path
-        run: |
-          echo "${{ secrets.KUBECONFIG_RAW }}" > $HOME/.kube/config
-          chmod 600 $HOME/.kube/config
       # Terraform Init & Apply
       - name: Terraform Apply
         run: |
