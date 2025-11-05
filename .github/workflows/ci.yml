@@ -29,7 +29,13 @@ jobs:
       # Setup Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
-
+        run: |
+          echo "KUBECONFIG=/home/ben/.kube/config" >> $GITHUB_ENV
+          
+      - name: Verify Minikube Kubeconfig Path
+        run: |
+          ls -la $KUBECONFIG
+          # 執行此步驟，確保 Runner 能夠讀取到這個檔案
       # Terraform Init & Apply
       - name: Terraform Apply
         run: |
