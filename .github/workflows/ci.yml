@@ -29,6 +29,8 @@ jobs:
       # Setup Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
+
+      - name: Set KUBECONFIG Environment Variable
         run: |
           echo "KUBECONFIG=/home/ben/.kube/config" >> $GITHUB_ENV
           
