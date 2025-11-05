@@ -7,8 +7,13 @@ terraform {
   }
 }
 
+variable "kubeconfig_raw" {
+  type        = string
+  description = "Raw kubeconfig content"
+}
+
 provider "kubernetes" {
-   config_path = "~/.kube/config"
+  config_raw = var.kubeconfig_raw
 }
 
 resource "kubernetes_namespace" "flask" {
