@@ -29,7 +29,10 @@ jobs:
       # Setup Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
-        
+      - name: test ping 
+        run: |
+          curl -k https://192.168.49.2:8443/version
+          curl -k http://127.0.0.1:8001/version
       # Terraform Init & Apply
       - name: Terraform Apply
         run: |
