@@ -35,6 +35,10 @@ jobs:
         run: |
           cd terraform
           terraform init
+          pwd
+          mkdir -p ~/.kube
+          cp /home/ben/.kube/config ~/.kube/config
+          chmod 600 ~/.kube/config
           terraform apply -auto-approve
       # 7. Run Blue → Green Playbook
       - name: Blue to Green Deploy
