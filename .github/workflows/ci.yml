@@ -32,8 +32,8 @@ jobs:
         
       - name: Verify Minikube Kubeconfig Path
         run: |
-          echo "KUBECONFIG=/home/ben/.kube/config" >> $GITHUB_ENV
-          ls -la $KUBECONFIG
+          echo "${{ secrets.KUBECONFIG_RAW }}" > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
       # Terraform Init & Apply
       - name: Terraform Apply
         run: |
