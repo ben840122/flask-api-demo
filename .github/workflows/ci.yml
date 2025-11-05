@@ -33,6 +33,7 @@ jobs:
       # Terraform Init & Apply
       - name: Terraform Apply
         run: |
+          ls -la $KUBECONFIG
           cd terraform
           terraform init
           terraform apply -auto-approve
