@@ -38,6 +38,10 @@ jobs:
       #    terraform apply -auto-approve
 
       # 7. Run Blue → Green Playbook
+      - name: Install Ansible & k8s deps
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install ansible kubernetes openshift
       - name: Blue to Green Deploy
         run: |
           ansible-playbook ansible/deploy-bluegreen.yml
