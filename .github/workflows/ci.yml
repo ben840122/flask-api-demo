@@ -29,9 +29,7 @@ jobs:
       # Setup Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
-      - name: test config
-        run: |
-          sed -i 's|https://192.168.49.2:8443|http://172.23.251.102:8001|g' ./kubeconfig.yaml
+
       # Terraform Init & Apply
       - name: Terraform Apply
         run: |
