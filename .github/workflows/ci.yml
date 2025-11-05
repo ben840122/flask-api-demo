@@ -31,6 +31,10 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         
       # Terraform Init & Apply
+      - name: Prepare kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          cp /home/ben/.kube/config_flat ~/.kube/config
       - name: Terraform Apply
         run: |
           echo "--- Current Working Directory ---"
