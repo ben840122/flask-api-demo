@@ -13,7 +13,7 @@ variable "kubeconfig_raw" {
 }
 
 provider "kubernetes" {
-  config_raw = var.kubeconfig_raw
+  raw_config_content = var.kubeconfig_raw
 }
 
 resource "kubernetes_namespace" "flask" {
