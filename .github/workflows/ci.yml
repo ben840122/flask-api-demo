@@ -33,6 +33,10 @@ jobs:
       # Terraform Init & Apply
       - name: Terraform Apply
         run: |
+          echo "--- Current Working Directory ---"
+          pwd
+          echo "--- Files in Directory ---"
+          ls -al
           cd terraform
           terraform init
           terraform apply -auto-approve
