@@ -30,12 +30,6 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      - name: Copy kubeconfig
-        run: |
-          mkdir -p $HOME/.kube
-          cp /home/ben/.kube/config $HOME/.kube/config
-          chmod 600 $HOME/.kube/config
-
       # Terraform Init & Apply
       - name: Terraform Apply
         run: |
