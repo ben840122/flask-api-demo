@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "kubernetes" {
-  config_path = "${path.module}/kubeconfig.yaml"
+  host = "http://127.0.0.1:8001"
 }
 
 resource "kubernetes_namespace" "flask" {
